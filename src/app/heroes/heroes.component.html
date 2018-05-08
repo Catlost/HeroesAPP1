@@ -19,13 +19,15 @@ recorriendo la lista de heroes que tengo en HEROES y muestro
 id + nombre de cada uno-->
 <!--class.selected se quedará marcando cambiando ese elemento
 de la lista si sucede que es igual que el selected-->
-<ul class="heroes">
+
+<!--<ul class="heroes">
   <li *ngFor="let hero of heroes" 
   [class.selected]="hero === selectedHero"
   (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
-</ul>
+</ul>-->
+
 <!-- Le añado la funcionalidad (click) para poder clickar en ellos
 y cuando se haga llame a la función onSelect declarada que le
 da el valor del Hero al que estoy clickando-->
@@ -34,6 +36,14 @@ da el valor del Hero al que estoy clickando-->
 <!-- *ngFor es como un repetidor que realiza 
 el host elem con todos los elems de una lista
 <li> host _ heroes lista _ hero objeto act-->
+
+    <ul class="heroes">
+        <li *ngFor="let hero of heroes">
+          <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+          </a>
+        </li>
+      </ul>
 
 <!--CODE B -->
 <!-- <div *ngIf="selectedHero"> -->
@@ -48,8 +58,9 @@ el host elem con todos los elems de una lista
       </div>
     </div> -->
 
-    <!--CODE C-->
+    <!--CODE C
     <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+    -->
     <!-- realizará todo el code del componente hero-detail
     y usando el hero que nos indica que es el selectedHero
   por lo que hace lo mismo ya que coge el selectedHero a una clase

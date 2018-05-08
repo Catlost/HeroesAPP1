@@ -12,7 +12,10 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./heroes.component.css']
   
 })
-export class HeroesComponent implements OnInit {
+/* export class HeroesComponent implements OnInit {
+
+  // El heroe elegido es el Hero
+  selectedHero: Hero;
 
   // Darle un valor a la var heroes con la matriz de heroes
   //heroes = HEROES;
@@ -36,8 +39,7 @@ export class HeroesComponent implements OnInit {
     // Que Angular lo llamara cuando sea necesario
   }
 
-  // El heroe elegido es de tipo Hero
-  selectedHero: Hero;
+  
 
   // Defino la clase para saber que Hero esta select
 onSelect(hero: Hero): void {
@@ -46,8 +48,25 @@ onSelect(hero: Hero): void {
 
 //Recupera los heroes del servicio
 getHeroes(): void {
-  this.heroes = this.heroService.getHeroes();
+  //this.heroes = this.heroService.getHeroes();
+  // Este era antes de añadir la funcionalidad del Observable
+  this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
 }
 
+} */
+export class HeroesComponent implements OnInit {
+  heroes: Hero[];
+
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit() {
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
+  }
 }
 
