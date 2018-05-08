@@ -1,0 +1,16 @@
+<!--CODE A -->
+<div *ngIf="hero">
+<!-- Nombre en mayusculas + Details-->
+<h2>{{ hero.name | uppercase }} Details</h2>
+<!-- strng id: + la id del hero en cuestión-->
+<div><span>id: </span>{{hero.id}}</div>
+<!-- Code1: Que mostraba solamente el nombre
+  <div><span>name: </span>{{hero.name}}</div>-->
+ <div>
+  <label>name:
+    <input [(ngModel)]="hero.name" placeholder="name">
+  </label>
+</div> 
+<!-- microFormulario donde recojo el nombre del hero
+al cual llamo name-->
+</div>
